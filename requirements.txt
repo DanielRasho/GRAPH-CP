@@ -1,0 +1,5 @@
+# MCP SDK
+mcp>=1.7.1
+
+# Graphviz Python interface
+graphviz>=0.21

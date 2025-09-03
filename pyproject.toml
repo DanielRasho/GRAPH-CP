@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graphviz-mcp-server"
+version = "1.0.0"
+description = "Production-ready MCP server for Graphviz DOT file processing"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.7.1",
+    "graphviz>=0.21"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "black>=23.0",
+    "mypy>=1.0"
+]
+
+# Fix the entry point to point to the actual server file
+[project.scripts]
+graphviz-mcp-server = "server:main"
+
+# Configure Hatchling to include the server.py file
+[tool.hatch.build.targets.wheel]
+include = [
+    "server.py",
+    "README.md",
+    "requirements.txt"
+]
+
+# UV-specific configuration
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21", 
+    "black>=23.0",
+    "mypy>=1.0",
+]
+
+# Tool configurations
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
