@@ -29,9 +29,25 @@ brew install graphviz
 # Download the executables in https://graphviz.org/download/
 ```
 
-3. Run the server
-```bash
-uv --directory=./ run server.py
+3. Then add the execution commands to your client config:
+```json
+{
+  "servers": [
+    {
+      "name": "GraphCP",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "<SOURCE CODE ABSOLUTE DIRECTORY>", 
+        "run",
+        "server.py"
+      ],
+      "description": "Graph generator",
+      "env": {
+      }
+    }
+  ]
+}
 ```
 
 4. Add the configuration 
